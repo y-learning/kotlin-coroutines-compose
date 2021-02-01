@@ -1,4 +1,4 @@
-package com.why.template.compose.theme
+package com.why.kotlin.coroutines.theme
 
 import androidx.compose.ui.graphics.Color
 

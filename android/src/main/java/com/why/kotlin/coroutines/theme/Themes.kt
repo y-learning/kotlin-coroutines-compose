@@ -1,4 +1,4 @@
-package com.why.template.compose.theme
+package com.why.kotlin.coroutines.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -32,7 +32,7 @@ private fun getAppropriateColors(darkTheme: Boolean) = when {
 }
 
 @Composable
-fun TemplateTheme(
+fun MyTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

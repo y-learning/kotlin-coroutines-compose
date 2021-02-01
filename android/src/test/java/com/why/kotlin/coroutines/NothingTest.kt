@@ -1,4 +1,4 @@
-package com.why.template.compose
+package com.why.kotlin.coroutines
 
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.ints.shouldBeExactly

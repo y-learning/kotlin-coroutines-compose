@@ -1,18 +1,21 @@
-package com.why.template.compose.view
+package com.why.kotlin.coroutines.view
 
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.platform.setContent
-import com.why.template.compose.theme.TemplateTheme
+import androidx.compose.ui.viewinterop.viewModel
+import com.why.kotlin.coroutines.theme.MyTheme
+import com.why.kotlin.coroutines.viewnodels.MainViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            TemplateTheme {
-                Greeting("Android ${Build.VERSION.SDK_INT}")
+            val mainViewModel = viewModel<MainViewModel>()
+
+            MyTheme {
+                Home(mainViewModel)
             }
         }
     }
