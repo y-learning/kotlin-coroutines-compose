@@ -4,6 +4,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
@@ -19,15 +22,32 @@ class MainViewModel : ViewModel() {
     var isLoading by mutableStateOf(false)
         private set
 
-    fun incTaps() {
-        tapsCount++
-    }
-
-    fun loadingOn() {
+    private fun loadingOn() {
         isLoading = true
     }
 
-    fun loadingOff() {
+    private fun loadingOff() {
         isLoading = false
+    }
+
+    private fun runWithLoadingIndicators(action: suspend () -> Unit) {
+        viewModelScope.launch {
+            loadingOn()
+
+            action()
+
+            loadingOff()
+        }
+    }
+
+    private suspend fun slowIncTaps() {
+        delay(1_000)
+        tapsCount++
+    }
+
+    fun incTaps() {
+        runWithLoadingIndicators {
+            slowIncTaps()
+        }
     }
 }

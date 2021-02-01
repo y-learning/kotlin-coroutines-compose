@@ -7,6 +7,7 @@ dependencies {
     implementation(Libs.AndroidX.coreKtx)
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.lifecycle)
+    implementation(Libs.AndroidX.vmLifecycle)
 
     implementation(Libs.AndroidMaterial.material)
 

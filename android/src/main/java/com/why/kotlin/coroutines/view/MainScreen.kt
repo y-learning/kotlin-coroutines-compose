@@ -43,8 +43,7 @@ fun Home(vm: MainViewModel) {
                 Spacer()
                 Text(text = "${vm.tapsCount} taps", style = type.h5)
                 Spacer()
-                if (vm.isLoading)
-                    CircularProgressIndicator()
+                if (vm.isLoading) CircularProgressIndicator()
             }
         }
     }

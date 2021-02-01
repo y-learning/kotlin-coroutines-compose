@@ -10,10 +10,14 @@ object Libs {
     }
 
     object AndroidX {
+        private const val lifeCycleVersion = "2.3.0-rc01"
+
         const val coreKtx = "androidx.core:core-ktx:1.5.0-beta01"
         const val appcompat = "androidx.appcompat:appcompat:1.3.0-beta01"
         const val lifecycle =
-            "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-rc01"
+            "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion"
+        const val vmLifecycle =
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
     }
 
     object AndroidMaterial {
