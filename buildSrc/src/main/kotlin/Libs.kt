@@ -1,5 +1,5 @@
 object Libs {
-    const val kotlinVersion = "1.4.21"
+    const val kotlinVersion = "1.4.21-2"
     const val jvmTarget = "11"
 
     object Gradle {
@@ -28,7 +28,7 @@ object Libs {
 
     object Compose {
         private const val gr = "androidx.compose"
-        const val version = "1.0.0-alpha10"
+        const val version = "1.0.0-alpha11"
 
         const val ui = "$gr.ui:ui:$version"
 
@@ -63,5 +63,25 @@ object Libs {
 
         const val core = "$group:y-core:$version"
         const val collections = "$group:y-collections:$version"
+    }
+
+    object Kotlinx {
+        private const val group = "org.jetbrains.kotlinx"
+        private const val version = "1.4.2"
+
+        const val coroutines = "$group:kotlinx-coroutines-android:$version"
+
+        const val coroutinesTest = "$group:kotlinx-coroutines-test:$version"
+    }
+
+    object Ktor {
+
+        private const val version = "1.5.1"
+
+        const val core = "io.ktor:ktor-client-core:version"
+
+        const val engine = "io.ktor:ktor-client-android:$version"
+
+        const val gson = "io.ktor:ktor-client-gson:$version"
     }
 }

@@ -5,15 +5,27 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
+import com.why.kotlin.coroutines.app.Result
+import com.why.kotlin.coroutines.app.Result.ERROR
+import com.why.kotlin.coroutines.app.Result.OK
+import com.why.kotlin.coroutines.app.TitleGateway
+import com.why.kotlin.coroutines.app.TitleGatewayImp
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(private val gateway: TitleGateway = TitleGatewayImp()) :
+    ViewModel() {
+
+    var isError: Boolean by mutableStateOf(false)
+        private set
 
     var topAppBarTitle by mutableStateOf("Kotlin Coroutines")
         private set
 
-    var itemTitle by mutableStateOf("Title")
+    private fun designTimeTitle() = "Title Title Title Title Title Title " +
+            "Title Title Title Title Title Title Title Title Title Title " +
+            "Title Title Title Title "
+
+    var itemTitle by mutableStateOf(designTimeTitle())
         private set
 
     var tapsCount by mutableStateOf(0)
@@ -40,14 +52,32 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    private suspend fun slowIncTaps() {
-        delay(1_000)
+    private fun incTaps() {
         tapsCount++
     }
 
-    fun incTaps() {
+    private fun showError() {
+        isError = true
+    }
+
+    fun hideError() {
+        isError = false
+    }
+
+    private fun isError(result: Map<Result, Any?>) =
+        result[ERROR] as String? != null
+
+    fun refreshTopBarTitle() {
         runWithLoadingIndicators {
-            slowIncTaps()
+            val result = gateway.getTitle()
+
+            when {
+                isError(result) -> showError()
+                else -> {
+                    itemTitle = result[OK] as String? ?: "No title found!"
+                    incTaps()
+                }
+            }
         }
     }
 }

@@ -21,11 +21,17 @@ dependencies {
     implementation(Libs.Y.core)
     implementation(Libs.Y.collections)
 
+    implementation(Libs.Ktor.core)
+    implementation(Libs.Ktor.engine)
+    implementation(Libs.Ktor.gson)
+
     testImplementation(Libs.Kotest.runner)
     testImplementation(Libs.Kotest.assertions)
     testImplementation(Libs.Kotest.property)
 
     testImplementation(Libs.Compose.uiTestJUnit)
+
+    testImplementation(Libs.Kotlinx.coroutinesTest)
 }
 
 android {
