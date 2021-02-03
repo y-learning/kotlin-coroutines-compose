@@ -84,4 +84,12 @@ object Libs {
 
         const val gson = "io.ktor:ktor-client-gson:$version"
     }
+
+    object WorkManager {
+        private const val version = "2.5.0"
+
+        const val work = "androidx.work:work-runtime-ktx:$version"
+
+        const val workTest = "androidx.work:work-testing:$version"
+    }
 }

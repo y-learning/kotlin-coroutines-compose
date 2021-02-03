@@ -25,6 +25,8 @@ dependencies {
     implementation(Libs.Ktor.engine)
     implementation(Libs.Ktor.gson)
 
+    implementation(Libs.WorkManager.work)
+
     testImplementation(Libs.Kotest.runner)
     testImplementation(Libs.Kotest.assertions)
     testImplementation(Libs.Kotest.property)
@@ -32,6 +34,12 @@ dependencies {
     testImplementation(Libs.Compose.uiTestJUnit)
 
     testImplementation(Libs.Kotlinx.coroutinesTest)
+
+    androidTestImplementation(Libs.Kotest.runner)
+    androidTestImplementation(Libs.Kotest.assertions)
+    androidTestImplementation(Libs.Kotest.property)
+    androidTestImplementation(Libs.WorkManager.workTest)
+    androidTestImplementation(Libs.Kotlinx.coroutinesTest)
 }
 
 android {
